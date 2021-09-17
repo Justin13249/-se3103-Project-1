@@ -51,6 +51,7 @@ public class WordGameListener implements ActionListener {
             guess = guessField.getText();
             String key = panel.getWordGame().getKey();
             char n = button.getText().charAt(0);
+
             boolean letterPresent = false;
             for(int i = 0; i < key.length(); i++) {
                 if(key.charAt(i) == n) {
@@ -63,12 +64,28 @@ public class WordGameListener implements ActionListener {
                 panel.getWordGame().setHealth(panel.getWordGame().getHealth() - 1);
             }
 
+            boolean win = true;
+            for(int i = 0; i < guess.length(); i++) {
+                if(guess.charAt(i) == '*') {
+                    win = false;
+                    break;
+                }
+            }
+
+            if(win) {
+                panel.setGameState(WordGamePanel.GameState.WON);
+                for ( var b: panel.getAlphaButtons()) {
+                    b.setEnabled(false);
+                }
+                panel.getCanvas().repaint();
+            }
+
             if(panel.getWordGame().getHealth() <= 0) {
-                panel.setGameState(WordGamePanel.GameState.GAMEOVER);
-                    for ( var b: panel.getAlphaButtons()) {
-                        b.setEnabled(false);
-                    }
-                    panel.getCanvas().repaint();
+                panel.setGameState(WordGamePanel.GameState.LOST);
+                for ( var b: panel.getAlphaButtons()) {
+                    b.setEnabled(false);
+                }
+                panel.getCanvas().repaint();
             } else {
                 guessField.setText(guess);
                 panel.getCanvas().repaint();

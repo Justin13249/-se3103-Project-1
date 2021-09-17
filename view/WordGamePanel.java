@@ -17,7 +17,7 @@ import controller.WordGameListener;
 public class WordGamePanel {
     
     public enum GameState {
-        READY, PLAYING, GAMEOVER
+        READY, PLAYING, LOST, WON
     }
 
     private JFrame window;

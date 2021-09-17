@@ -38,10 +38,16 @@ public class WordGameCanvas extends JPanel{
 
         } else {
 
-            if(state == WordGamePanel.GameState.GAMEOVER) {
+            if(state == WordGamePanel.GameState.LOST) {
                 g2.setColor(Color.red);
                 g2.setFont(new Font("Courier New", Font.BOLD, 30));
                 g2.drawString("YOU LOST !!!", 70, 110);
+                g2.setColor(Color.blue);
+                g2.drawString("Click <New> to Start", 70, 150);
+            } else if (state == WordGamePanel.GameState.WON) {
+                g2.setColor(Color.red);
+                g2.setFont(new Font("Courier New", Font.BOLD, 30));
+                g2.drawString("YOU WON !!!", 70, 110);
                 g2.setColor(Color.blue);
                 g2.drawString("Click <New> to Start", 70, 150);
             } else {
