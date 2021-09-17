@@ -71,7 +71,6 @@ public class WordGameListener implements ActionListener {
                     panel.getCanvas().repaint();
             } else {
                 guessField.setText(guess);
-                System.out.println(guess);
                 panel.getCanvas().repaint();
             }
         
